@@ -1,0 +1,110 @@
+export const books = [
+  {
+    id: 1,
+    title: "El Quijote de la Mancha",
+    author: "Miguel de Cervantes",
+    price: 29.99,
+    description: "La obra maestra de la literatura española que narra las aventuras de Don Quijote y su fiel escudero Sancho Panza. Una sátira de las novelas de caballería y una profunda reflexión sobre la realidad y la ficción.",
+    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400",
+    category: "Clásico",
+    pages: 863,
+    isbn: "978-8491050896",
+    stock: 15
+  },
+  {
+    id: 2,
+    title: "Cien años de soledad",
+    author: "Gabriel García Márquez",
+    price: 24.99,
+    description: "Novela del realismo mágico que cuenta la historia de la familia Buendía en el pueblo ficticio de Macondo. Una obra fundamental de la literatura latinoamericana que explora temas de amor, soledad y destino.",
+    image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400",
+    category: "Realismo Mágico",
+    pages: 471,
+    isbn: "978-8437604947",
+    stock: 8
+  },
+  {
+    id: 3,
+    title: "La Sombra del Viento",
+    author: "Carlos Ruiz Zafón",
+    price: 19.99,
+    description: "Una novela misteriosa que transcurre en la Barcelona de posguerra, donde un joven descubre un libro maldito que cambiará su vida para siempre.",
+    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400",
+    category: "Misterio",
+    pages: 565,
+    isbn: "978-8408092312",
+    stock: 12
+  },
+  {
+    id: 4,
+    title: "1984",
+    author: "George Orwell",
+    price: 17.99,
+    description: "Una distopía que describe un futuro totalitario donde el gobierno controla todos los aspectos de la vida, incluyendo el pensamiento y la historia.",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400",
+    category: "Distopía",
+    pages: 328,
+    isbn: "978-8499890944",
+    stock: 20
+  },
+  {
+    id: 5,
+    title: "Orgullo y Prejuicio",
+    author: "Jane Austen",
+    price: 15.99,
+    description: "Una comedia romántica que sigue la relación entre Elizabeth Bennet y el señor Darcy, explorando temas de amor, clase social y prejuicios.",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400",
+    category: "Romance",
+    pages: 432,
+    isbn: "978-8491050865",
+    stock: 18
+  },
+  {
+    id: 6,
+    title: "El Hobbit",
+    author: "J.R.R. Tolkien",
+    price: 22.99,
+    description: "La aventura de Bilbo Bolsón, un hobbit que se embarca en un viaje épico para ayudar a un grupo de enanos a recuperar su hogar.",
+    image: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=400",
+    category: "Fantasía",
+    pages: 310,
+    isbn: "978-8445000663",
+    stock: 10
+  },
+  {
+    id: 7,
+    title: "Crimen y Castigo",
+    author: "Fiódor Dostoyevski",
+    price: 21.99,
+    description: "La historia de Rodión Raskólnikov, un estudiante que comete un asesinato y debe enfrentar las consecuencias morales de sus actos.",
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400",
+    category: "Psicológico",
+    pages: 671,
+    isbn: "978-8420674204",
+    stock: 7
+  },
+  {
+    id: 8,
+    title: "El Principito",
+    author: "Antoine de Saint-Exupéry",
+    price: 12.99,
+    description: "Una fábula filosófica que sigue las aventuras de un pequeño príncipe que viaja por diferentes planetas y aprende lecciones sobre la vida y el amor.",
+    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400",
+    category: "Filosófico",
+    pages: 96,
+    isbn: "978-8498381498",
+    stock: 4
+  },
+  {
+    id: 9,
+    title: "Harry Potter y la Piedra Filosofal",
+    author: "J.K. Rowling",
+    price: 18.99,
+    description: "El inicio de la saga del joven mago Harry Potter, quien descubre que es un mago y comienza su educación en la escuela de Hogwarts.",
+    image: "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?w=400",
+    category: "Fantasía",
+    pages: 264,
+    isbn: "978-8478884452",
+    stock: 14
+  }
+];

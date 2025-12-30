@@ -1,0 +1,239 @@
+/* Bloque principal */
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+/* Elemento: contenido principal */
+.home__main {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+/* Elemento: contenedor */
+.home__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Elemento: cabecera */
+.home__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Elemento: título */
+.home__title {
+  font-size: 2.5rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+/* Elemento: subtítulo */
+.home__subtitle {
+  font-size: 1.1rem;
+  color: #718096;
+  margin: 0;
+}
+
+/* Elemento: estado vacío */
+.home__empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Elemento: icono vacío */
+.home__emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+/* Elemento: título vacío */
+.home__emptyTitle {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+/* Elemento: texto vacío */
+.home__emptyText {
+  color: #718096;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Elemento: botón vacío */
+.home__emptyButton {
+  padding: 0.75rem 2rem;
+  background-color: #0e525f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home__emptyButton:hover {
+  background-color: #5a67d8;
+}
+
+/* Elemento: destacados */
+.home__featured {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Elemento: título destacados */
+.home__featuredTitle {
+  font-size: 1.8rem;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Elemento: grid destacados */
+.home__featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Elemento: card destacado */
+.home__featuredCard {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home__featuredCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Elemento: imagen destacado */
+.home__featuredImage {
+  height: 160px;
+  overflow: hidden;
+}
+
+.home__featuredImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Elemento: contenido destacado */
+.home__featuredContent {
+  padding: 1.5rem;
+}
+
+/* Elemento: título libro destacado */
+.home__featuredBookTitle {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Elemento: autor destacado */
+.home__featuredBookAuthor {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 0.75rem;
+}
+
+/* Elemento: precio destacado */
+.home__featuredPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #72dbed;
+}
+
+/* Elemento: pie de página */
+.home__footer {
+  background-color: #2d3748;
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Elemento: contenido del pie */
+.home__footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Elemento: texto del pie */
+.home__footerText {
+  margin: 0;
+  color: #cbd5e0;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home__filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .home__filterGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .home__featuredGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .home__footerContent {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .home__footerLinks {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__container {
+    padding: 0 1rem;
+  }
+  
+  .home__title {
+    font-size: 2rem;
+  }
+  
+  .home__filterGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .home__filterOptions {
+    flex-wrap: wrap;
+  }
+}

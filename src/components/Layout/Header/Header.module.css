@@ -1,0 +1,191 @@
+/* Bloque: header */
+.header {
+  background-color: white;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Elemento: contenedor */
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+/* Elemento: logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+/* Elemento: icono logo */
+.header__logoIcon {
+  font-size: var(--font-size-2xl);
+}
+
+/* Elemento: texto logo */
+.header__logoText {
+  font-size: var(--font-size-xl);
+  color: var(--color-gray-800);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Elemento: búsqueda */
+.header__search {
+  flex: 1;
+  max-width: 600px;
+}
+
+/* Elemento: contenedor búsqueda */
+.header__searchContainer {
+  position: relative;
+  display: flex;
+}
+
+/* Elemento: input búsqueda */
+.header__searchInput {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  padding-right: 60px;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-gray-800);
+  transition: border-color 0.3s ease;
+}
+
+.header__searchInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.header__searchInput::placeholder {
+  color: var(--color-gray-400);
+}
+
+/* Elemento: botón búsqueda */
+.header__searchButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background-color: #0e525f;
+  border: none;
+  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.header__searchButton:hover {
+  background-color: var(--color-primary);
+}
+
+/* Elemento: icono búsqueda */
+.header__searchIcon {
+  font-size: var(--font-size-lg);
+}
+
+/* Elemento: acciones */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Elemento: botón carrito */
+.header__cartButton {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--border-radius-md);
+  background-color: white;
+  color: var(--color-gray-700);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.header__cartButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Elemento: icono carrito */
+.header__cartIcon {
+  font-size: var(--font-size-lg);
+}
+
+/* Elemento: badge carrito */
+.header__cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  height: 20px;
+  background-color: var(--color-danger);
+  color: white;
+  border-radius: 50%;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* Elemento: icono usuario */
+.header__userIcon {
+  font-size: var(--font-size-lg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+  
+  .header__search {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .header__logoText {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .header__logoText {
+    font-size: var(--font-size-base);
+  }
+  
+  .header__searchInput {
+    padding: var(--spacing-sm) var(--spacing-md);
+    padding-right: 50px;
+  }
+}
