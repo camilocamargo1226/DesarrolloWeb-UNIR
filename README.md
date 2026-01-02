@@ -1,6 +1,6 @@
 ### Confirmacion de la Rúbrica
 
-- **Uso de la librería React para construir un frontal que utilice componentes funcionales (mínimo de diez) y que haga uso de de JSX (por ende, HTML) ✅**
+- **Uso de la librería React para construir un frontal que utilice componentes funcionales (mínimo de diez) y que haga uso de de JSX (por ende, HTML)**
 1. Header (Barra buscador)
 2. Footer (Info del proyecto)
 3. Landing (Landing que dura 5 seg)
@@ -18,19 +18,19 @@
 15. PaymentForm.jsx (formulario pago)
 16. Loader (Loader simulando consulta libro)
 
-- **Uso al menos de los hooks estudiados más importantes, useState y useEffect** ✅
+- **Uso al menos de los hooks estudiados más importantes, useState y useEffect** 
 1. UseState
 2. UseEffect
 3. useNavigate
 4. useParams
 
-- **Implementación de un custom hook a elección.** ✅
+- **Implementación de un custom hook a elección.** 
 
 Custom Hook useLocalStorage: 
 Guarda automáticamente el estado en el almacenamiento local del navegador.
 Recupera automáticamente los datos guardados al cargar la página.
 
-**Uso de React Router para implementar diferentes rutas en la aplicación (mínimo de cuatro)** ✅
+**Uso de React Router para implementar diferentes rutas en la aplicación (mínimo de cuatro)** 
 
 ```js
 <Route path="/" element={<LandingPage />} />
@@ -40,28 +40,30 @@ Recupera automáticamente los datos guardados al cargar la página.
 ```
 
 
-**Aplicar estilos mediante hojas de estilo CSS. Se permite utilizar Bootstrap, Tailwind y SCSS, pero se debe seguir la metodología BEM.** ✅
+**Aplicar estilos mediante hojas de estilo CSS. Se permite utilizar Bootstrap, Tailwind y SCSS, pero se debe seguir la metodología BEM.** 
 
 
 ****
 
+****
+
 **Vista de acceso**
-* muestra una landing. Se redireccionará al usuario a la vista de página principal a los cinco segundos si no realiza ninguna acción.✅
+* muestra una landing. Se redireccionará al usuario a la vista de página principal a los cinco segundos si no realiza ninguna acción
 
 **Vista de página principal:** 
-* muestra una página principal donde se puedan encontrar algunos de los libros que se venden en la aplicación web.✅ 
-* Se dispondrá de una barra de búsqueda en la parte superior que permitirá en el futuro buscar por cualquier término asociado a un libro (autor, código de libro, título de libro…). ✅
-* Al hacer clic en un libro, se redirigirá a la vista de libro. ✅
+* muestra una página principal donde se puedan encontrar algunos de los libros que se venden en la aplicación web
+* Se dispondrá de una barra de búsqueda en la parte superior que permitirá en el futuro buscar por cualquier término asociado a un libro (autor, código de libro, título de libro…).
+* Al hacer clic en un libro, se redirigirá a la vista de libro.
 
 **Vista de libro:**
-* Muestra los detalles de un libro en concreto y permite añadirlo al carrito. ✅
+* Muestra los detalles de un libro en concreto y permite añadirlo al carrito.
 
 **Carrito**
-* Tanto en la vista de la página principal como en la de libro, será visible el carrito (ya sea en todo momento o mediante una animación desplegable), donde estarán todos aquellos libros que el usuario haya decidido comprar. Este podrá eliminar libros del carrito o proceder al checkout. ✅
+* Tanto en la vista de la página principal como en la de libro, será visible el carrito (ya sea en todo momento o mediante una animación desplegable), donde estarán todos aquellos libros que el usuario haya decidido comprar. Este podrá eliminar libros del carrito o proceder al checkout.
 
 **Vista de checkout**
-* El usuario verá un resumen de los libros que va a comprar y, si está conforme, podrá proceder al pago. ✅
-* A los efectos de esta actividad, el pago satisfactorio consiste en mostrar una alerta de que el pedido se ha realizado, vaciar el carrito y redirigir a la vista de la página principal (en este orden).  ✅
+* El usuario verá un resumen de los libros que va a comprar y, si está conforme, podrá proceder al pago.
+* A los efectos de esta actividad, el pago satisfactorio consiste en mostrar una alerta de que el pedido se ha realizado, vaciar el carrito y redirigir a la vista de la página principal (en este orden).
 
 
 
@@ -109,3 +111,84 @@ Recupera automáticamente los datos guardados al cargar la página.
 | 14 | PaymentForm        | N/A                                         | Componente funcional para formulario de pago.                                                                                                                                  | N/A                                                                                                                                                                                                                                                                                                                                                                                |
 | 15 | ProgressSteps      | N/A                                         | Componente funcional para indicador de progreso.                                                                                                                               | N/A                                                                                                                                                                                                                                                                                                                                                                                |
 | 16 | ShippingForm       | N/A                                         | Componente funcional para formulario de envío.                                                                                                                                 | N/A                                                                                                                                                                                                                                                                                                                                                                                |
+
+****
+
+# Distribución de componentes (carpetas y archivos):
+```
+src
+├── App.css
+├── App.jsx
+├── assets
+│   ├── Gemini_Generated_Image_fmgolefmgolefmgo.png
+│   └── react.svg
+├── components
+│   ├── Book
+│   │   ├── BookCard
+│   │   │   ├── BookCard.jsx
+│   │   │   └── BookCard.module.css
+│   │   ├── BookDetail
+│   │   │   ├── BookDetail.jsx
+│   │   │   └── BookDetail.module.css
+│   │   └── BookList
+│   │       ├── BookList.jsx
+│   │       └── BookList.module.css
+│   ├── Cart
+│   │   ├── CartSidebar
+│   │   │   ├── CartSidebar.jsx
+│   │   │   └── CartSidebar.module.css
+│   │   └── Checkout
+│   │       ├── Checkout.jsx
+│   │       ├── Checkout.module.css
+│   │       ├── CheckoutEmpty.jsx
+│   │       ├── CheckoutSuccess.jsx
+│   │       ├── OrderSummary.jsx
+│   │       ├── PaymentForm.jsx
+│   │       ├── ProgressSteps.jsx
+│   │       └── ShippingForm.jsx
+│   ├── Common
+│   │   └── Loader
+│   │       ├── Loader.jsx
+│   │       └── Loader.module.css
+│   ├── Home
+│   │   ├── HomePage.jsx
+│   │   └── HomePage.module.css
+│   ├── Landing
+│   │   ├── LandingPage.jsx
+│   │   └── LandingPage.module.css
+│   └── Layout
+│       ├── CartSidebar
+│       │   ├── CartSidebar.jsx
+│       │   └── CartSidebar.module.css
+│       ├── Footer
+│       │   ├── Footer.jsx
+│       │   └── Footer.module.css
+│       └── Header
+│           ├── Header.jsx
+│           └── Header.module.css
+├── context
+│   └── CartContext.jsx
+├── data
+│   └── books.js
+├── hooks
+│   └── useLocalStorage.js
+├── index.css
+├── main.jsx
+└── styles
+    └── global.css
+```
+****
+
+# Rúbrica de Evaluación
+
+| Criterio | Descripción | Puntuación máxima (puntos) | Peso % |
+|----------|-------------|----------------------------|--------|
+| **Criterio 1** | Implementación de componentes funcionales en React (mínimo de diez) haciendo uso de JSX. | 0,5 | 5% |
+| **Criterio 2** | Uso de los hooks principales de React: useState y useEffect. | 0,5 | 5% |
+| **Criterio 3** | Implementación de un custom hook que sea utilizado en algún componente funcional. | 1 | 10% |
+| **Criterio 4** | Uso correcto de React Router para crear diferentes rutas dentro de la aplicación. | 1 | 10% |
+| **Criterio 5** | Modificación del estilo de la aplicación mediante el uso de CSS. Uso de metodología BEM. | 1 | 10% |
+| **Criterio 6** | Implementación y funcionamiento correcto de las vistas necesarias para cubrir la funcionalidad mínima de la aplicación. | 4,5 | 45% |
+| **Criterio 7** | Elaboración de la videomemoria obligatoria según las especificaciones, ajustándose a la duración aproximada y cubriendo los aspectos solicitados. | 1 | 10% |
+| **Criterio 8** | Despliegue en Vercel | 0,5 | 5% |
+| **TOTAL** | | **10** | **100%** |
