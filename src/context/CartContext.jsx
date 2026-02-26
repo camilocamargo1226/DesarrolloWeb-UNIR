@@ -33,7 +33,13 @@ export const CartProvider = ({ children }) => {
         };
         return updatedItems;
       } else {
-        return [...prevItems, { ...book, quantity }];
+        // Normalizar la imagen: si existe imageUrl del backend, usarla como image
+        const bookWithNormalizedImage = {
+          ...book,
+          // Si hay imageUrl, la usamos como image para el frontend
+          image: book.imageUrl || book.image || 'https://placehold.co/200x300/2c3e50/white?text=Libro'
+        };
+        return [...prevItems, { ...bookWithNormalizedImage, quantity }];
       }
     });
   };

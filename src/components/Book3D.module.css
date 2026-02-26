@@ -1,0 +1,236 @@
+/* Book3D.module.css */
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.book__container {
+  position: relative;
+  cursor: pointer;
+  perspective: 1200px;
+}
+
+.book__inner {
+  position: relative;
+  width: 160px; /* Reducido de 200px */
+  height: 232px; /* Reducido de 290px (proporción 1:1.45) */
+  transition: transform 0.7s ease-out;
+  transform-style: preserve-3d;
+  transform: rotateY(-20deg) rotateX(2deg);
+}
+
+.book__inner--hovered {
+  transform: rotateY(-35deg) rotateX(5deg) translateZ(10px);
+}
+
+/* Front Cover */
+.book__front {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  transform: translateZ(10px); /* Reducido de 12px */
+  backface-visibility: hidden;
+}
+
+.book__frontImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+  transition: opacity 0.7s;
+}
+
+.book__shine--hovered {
+  opacity: 0.8;
+}
+
+.book__shine:not(.book__shine--hovered) {
+  opacity: 0.4;
+}
+
+/* Spine */
+.book__spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20px; /* Reducido de 24px */
+  border-radius: 2px 0 0 2px;
+  transform: rotateY(90deg) translateZ(0px) translateX(-10px);
+  transform-origin: left center;
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.3);
+}
+
+.book__spineContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.book__spineText {
+  font-family: 'Playfair Display', serif;
+  font-size: 7px; /* Reducido de 8px */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 2px;
+  max-height: 210px;
+}
+
+/* Back Cover */
+.book__back {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px 0 0 4px;
+  transform: translateZ(-10px);
+  backface-visibility: hidden;
+}
+
+/* Top edge (pages) */
+.book__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; /* Reducido de 24px */
+  background: linear-gradient(180deg, #f0e9d8, #e8dfcb);
+  transform: rotateX(90deg) translateZ(0px) translateY(-10px);
+  transform-origin: top center;
+}
+
+/* Bottom edge (pages) */
+.book__bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; /* Reducido de 24px */
+  background: linear-gradient(0deg, #f0e9d8, #e8dfcb);
+  transform: rotateX(-90deg) translateZ(0px) translateY(10px);
+  transform-origin: bottom center;
+}
+
+/* Right edge (pages) */
+.book__right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20px; /* Reducido de 24px */
+  background: linear-gradient(90deg, #e8dfcb, #ede5d2);
+  transform: rotateY(90deg) translateZ(150px) translateX(-10px); /* Ajustado de 188px */
+  transform-origin: left center;
+  box-shadow: inset 2px 0 6px rgba(0,0,0,0.08);
+}
+
+.book__pages {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2px;
+  gap: 1px;
+}
+
+.book__pageLine {
+  width: 100%;
+  border-bottom: 1px solid #d6cdbb;
+  opacity: 0.6;
+}
+
+/* Shadow */
+.book__shadow {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 16px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.25) 0%, transparent 70%);
+  filter: blur(4px);
+  transition: all 0.7s;
+}
+
+.book__shadow--hovered {
+  width: 160px;
+  filter: blur(6px);
+  transform: translateX(-50%) translateY(4px);
+}
+
+/* Book Info */
+.book__info {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.book__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2d3748;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.book__author {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.75rem;
+  color: #718096;
+  margin: 0.25rem 0 0 0;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .book__inner {
+    width: 140px;
+    height: 203px;
+  }
+  
+  .book__right {
+    transform: rotateY(90deg) translateZ(130px) translateX(-10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .book__inner {
+    width: 120px;
+    height: 174px;
+  }
+  
+  .book__right {
+    transform: rotateY(90deg) translateZ(110px) translateX(-10px);
+  }
+}

@@ -331,7 +331,57 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid #e2e8f0;
 }
+.checkout__purchases {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  text-align: left;
+}
 
+.checkout__purchases h3 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.checkout__purchasesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.checkout__purchaseItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.checkout__purchaseBook {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.checkout__purchaseStatus {
+  color: #28a745;
+  font-size: 0.85rem;
+}
+
+.checkout__purchaseDate {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.checkout__orderNumber {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
 /* Elemento: items orden */
 .checkout__orderItems {
   max-height: 300px;

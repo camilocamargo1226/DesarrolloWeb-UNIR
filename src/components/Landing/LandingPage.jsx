@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './LandingPage.module.css';
-import logoImage from '../../assets/Gemini_Generated_Image_fmgolefmgolefmgo.png';
+import { BookOpen } from "lucide-react";
+import Book3D from "../Book3D";
+import bookCover1 from "../../assets/book-cover-1.png";
+import bookCover2 from "../../assets/book-cover-2.png";
+import bookCover3 from "../../assets/book-cover-3.png";
+
+const featuredBooks = [
+  { cover: bookCover1, title: "Cien Años de Soledad", author: "Gabriel García Márquez", spine: "hsl(25, 45%, 22%)" },
+  { cover: bookCover2, title: "El Principito", author: "Antoine de Saint-Exupéry", spine: "hsl(220, 55%, 35%)" },
+  { cover: bookCover3, title: "Don Quijote de la Mancha", author: "Miguel de Cervantes", spine: "hsl(15, 40%, 28%)" },
+];
 
 const LandingPage = () => {
+  const [hasInteracted] = useState(false);
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    // Redirección automática después de 5 segundos
     const redirectTimer = setTimeout(() => {
       navigate('/home');
     }, 5000);
 
-    // Temporizador para el contador
     const countdownTimer = setInterval(() => {
       setCountdown(prev => {
         if (prev <= 1) {
@@ -24,7 +33,6 @@ const LandingPage = () => {
       });
     }, 1000);
 
-    // Limpieza de timers
     return () => {
       clearTimeout(redirectTimer);
       clearInterval(countdownTimer);
@@ -39,25 +47,61 @@ const LandingPage = () => {
     <div className={styles.landing}>
       <div className={styles.landing__container}>
         <div className={styles.landing__content}>
-          <div className={styles.landing__logo}>
-            <span className={styles.landing__logoIcon}>📚</span>
-            <h1 className={styles.landing__title}>Relatos de Papel</h1>
+          
+          {/* Header / Brand - AHORA USA CLASES BEM */}
+          <div className={styles.landing__header}>
+            <div className={styles.landing__brand}>
+              <BookOpen className={styles.landing__brandIcon} strokeWidth={1.5} />
+              <span className={styles.landing__brandText}>
+                Relatos de Papel
+              </span>
+            </div>
+
+            <h1 className={styles.landing__title}>
+              Donde cada página{" "}
+              <span className={styles['landing__title--highlight']}>
+                cuenta una historia
+              </span>
+            </h1>
+
+            <p className={styles.landing__subtitle}>
+              Descubre una colección cuidada de libros que inspiran, educan y
+              transforman. Tu próxima gran lectura te espera.
+            </p>
           </div>
 
-          <img 
-            src={logoImage} 
-            alt="Relatos de Papel" 
-            className={styles.landing__image}
-          />
-          <div className={styles.landing__message}>
-            <p className={styles.landing__text}>
-              Descubre miles de libros de todas las categorías
+          {/* 3D Books showcase - AHORA USA CLASES BEM */}
+          <div className={styles.landing__showcase}>
+            <p className={styles.landing__showcaseLabel}>
+              Destacados — pasa el cursor sobre los libros
             </p>
-            <p className={styles.landing__text}>
-              Ofertas exclusivas y envío rápido
-            </p>
+            <div className={styles.landing__booksGrid}>
+              {featuredBooks.map((book, i) => (
+                <Book3D
+                  key={book.title}
+                  coverImage={book.cover}
+                  title={book.title}
+                  author={book.author}
+                  spineColor={book.spine}
+                  delay={0.7 + i * 0.2}
+                />
+              ))}
+            </div>
           </div>
 
+          {/* Bounce loader dots - AHORA USA CLASES BEM */}
+          {!hasInteracted && (
+            <div className={styles.landing__loader}>
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className={styles.landing__loaderDot}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Estas secciones ya usaban BEM y se mantienen igual */}
           <div className={styles.landing__countdown}>
             <p className={styles.landing__countdownText}>
               Redirigiendo a la tienda en <span className={styles.landing__countdownNumber}>{countdown}</span> segundos
