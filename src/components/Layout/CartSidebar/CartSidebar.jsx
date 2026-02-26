@@ -16,6 +16,12 @@ const CartSidebar = ({
   const [isAnimating, setIsAnimating] = useState(false);
   const [localItems, setLocalItems] = useState(items);
 
+  // Función para obtener la URL de la imagen correcta
+ const getImageUrl = (item) => {
+  // Primero intenta con imageUrl (backend), luego con image (frontend), luego placeholder
+  return item.imageUrl || item.image || 'https://placehold.co/200x300/2c3e50/white?text=Libro';
+};
+
   // Sincronizar items locales con props
   useEffect(() => {
     setLocalItems(items);
@@ -75,6 +81,12 @@ const CartSidebar = ({
     return (price * quantity).toFixed(2);
   };
 
+  const handleImageError = (e, item) => {
+    e.target.onerror = null;
+    e.target.src = `https://placehold.co/200x300/2c3e50/white?text=${encodeURIComponent(item.title.substring(0, 20))}`;
+    e.target.referrerPolicy = 'no-referrer';
+  };
+
   if (!isOpen && !isAnimating) return null;
 
   return (
@@ -132,9 +144,11 @@ const CartSidebar = ({
                     {/* Item image */}
                     <div className={styles.cartSidebar__itemImage}>
                       <img 
-                        src={item.image} 
+                        src={getImageUrl(item)}
                         alt={item.title}
                         className={styles.cartSidebar__itemImg}
+                        onError={(e) => handleImageError(e, item)}
+                        referrerPolicy="no-referrer"
                       />
                     </div>
 

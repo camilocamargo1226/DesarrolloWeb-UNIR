@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../../context/CartContext.jsx';
+import { paymentService } from '../../../services/api'; // Importamos el servicio de pagos
 import Footer from '../../Layout/Footer/Footer';
 import CheckoutSuccess from './CheckoutSuccess';
 import CheckoutEmpty from './CheckoutEmpty';
@@ -15,6 +16,7 @@ const Checkout = () => {
   const [step, setStep] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderCompleted, setOrderCompleted] = useState(false);
+  const [purchaseResults, setPurchaseResults] = useState([]); // Para guardar resultados de compras
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -31,6 +33,7 @@ const Checkout = () => {
   });
   const [errors, setErrors] = useState({});
   const { cartItems, clearCart, getCartTotal } = useCart();
+
   // Calcular totales
   const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   const shipping = subtotal > 50 ? 0 : 5.99;
@@ -114,27 +117,66 @@ const Checkout = () => {
     setStep(prev => prev - 1);
   };
 
+  // Función para procesar todas las compras
+  const processPurchases = async () => {
+    const results = [];
+    const errors = [];
+
+    // Procesar cada item del carrito
+    for (const item of cartItems) {
+      try {
+        // Para cada unidad del libro, crear una compra
+        for (let i = 0; i < item.quantity; i++) {
+          const result = await paymentService.createPurchase(item.id, formData.email);
+          results.push(result);
+          // Pequeña pausa para no saturar la API
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+      } catch (error) {
+        console.error(`Error comprando libro ${item.id}:`, error);
+        errors.push({
+          bookId: item.id,
+          title: item.title,
+          error: error.message
+        });
+      }
+    }
+
+    return { results, errors };
+  };
+
   const handleSubmitOrder = async () => {
     if (!validateStep(2)) return;
     
     setIsProcessing(true);
     
-    // Simular procesamiento de pago
-    setTimeout(() => {
-      setIsProcessing(false);
+    try {
+      // Procesar todas las compras
+      const { results, errors } = await processPurchases();
+      
+      setPurchaseResults(results);
+      
+      if (errors.length > 0) {
+        // Si hubo errores parciales, mostrar mensaje
+        alert(`Algunos libros no pudieron ser procesados. ${errors.length} error(es).`);
+        console.error('Errores en compras:', errors);
+      } else {
+        // Todas las compras fueron exitosas
+        alert('¡Pedido realizado con éxito! Tu pedido ha sido procesado correctamente.');
+      }
+      
       setOrderCompleted(true);
       
-      // Mostrar alerta como requisito de la actividad
-      alert('¡Pedido realizado con éxito! Tu pedido ha sido procesado correctamente.');
-    }, 2000);
+    } catch (error) {
+      console.error('Error al procesar el pedido:', error);
+      alert('Hubo un error al procesar tu pedido. Por favor, intenta de nuevo.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const handleContinueShopping = () => {
     navigate('/home');
-  };
-
-  const formatCardNumber = (value) => {
-    return value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
   };
 
   if (cartItems.length === 0 && !orderCompleted) {
@@ -162,8 +204,16 @@ const Checkout = () => {
   }
 
   if (orderCompleted) {
-    return <CheckoutSuccess total={total} onNavigateHome={handleContinueShopping} />;
+    return (
+      <CheckoutSuccess 
+        total={total} 
+        onNavigateHome={handleContinueShopping}
+        purchaseResults={purchaseResults}
+        userEmail={formData.email}
+      />
+    );
   }
+
   return (
     <div className={styles.checkout}>
       <header className={styles.checkout__header}>

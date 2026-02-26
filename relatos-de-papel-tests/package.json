@@ -1,0 +1,21 @@
+{
+  "name": "relatos-de-papel-tests",
+  "version": "1.0.0",
+  "description": "Pruebas automatizadas de aceptación y funcionales — Relatos de Papel",
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:aceptacion": "cypress run --spec 'cypress/e2e/aceptacion/**/*.feature'",
+    "test:funcionales": "cypress run --spec 'cypress/e2e/funcionales/**/*.feature'"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step_definitions/**/*.steps.js"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "22.1.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.7",
+    "cypress": "13.17.0",
+    "esbuild": "^0.25.0"
+  }
+}

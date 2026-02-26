@@ -25,10 +25,16 @@ const BookCard = ({ book, onAddToCart, onViewDetail }) => {
         onClick={handleCardClick}
       >
         <img 
-          src={book.image} 
-          alt={book.title}
-          className={styles.bookCard__image}
-        />
+  src={book.imageUrl} 
+  alt={book.title}
+  className={styles.bookCard__image}
+  referrerPolicy="no-referrer"  // Añade esta línea
+  onError={(e) => {
+    // Si la imagen falla, usar placeholder
+    e.target.onerror = null;
+    e.target.src = 'https://placehold.co/200x300/2c3e50/white?text=Libro';
+  }}
+/>
         {book.stock < 5 && (
           <div className={styles.bookCard__stockBadge}>
             ¡Últimas {book.stock} unidades!
